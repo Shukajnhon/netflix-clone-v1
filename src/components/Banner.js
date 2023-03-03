@@ -4,8 +4,6 @@ import {BASE_IMG_URL} from "../utils/Constants";
 const Banner = ({movies}) => {
   const [movie, setMovie] = useState(movies || null);
 
-  // console.log("movies:", movies);
-
   //   set Random movie banner
   useEffect(() => {
     const movieLength = movies.length;
@@ -22,13 +20,8 @@ const Banner = ({movies}) => {
     movie || [];
   // console.log(movie);
 
-  // if (overview) {
-  //   const reduceOverview = overview.slice(0, 100);
-  //   return reduceOverview;
-  // }
-
   return (
-    <div className="flex flex-col py-16 space-y-2 md:space-y-4 lg:h-[64vh] lg:p-12">
+    <div className="flex flex-col py-1 md:py-16 space-y-2 md:space-y-4 lg:h-[64vh] lg:p-12">
       <div className="absolute top-0 left-0 right-0 h-[95vh] w-screen object-cover -z-10">
         <img
           src={`${BASE_IMG_URL}/original${backdrop_path || poster_path}`}

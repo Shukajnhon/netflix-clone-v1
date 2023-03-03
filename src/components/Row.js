@@ -4,7 +4,7 @@ import Thumbnail from "./Thumbnail";
 const Row = ({title, type, value, movies}) => {
   const rowRef = useRef();
 
-  const [isMoved, setIsMoved] = useState(false);
+  const [, setIsMoved] = useState(false);
   // console.log(isMoved);
 
   const handleClick = (value) => {
@@ -26,7 +26,7 @@ const Row = ({title, type, value, movies}) => {
 
   return (
     <section>
-      <div className="h-40 pl-4 space-y-0.5 md:space-y-2">
+      <div className="h-28 md:h-40 pl-4 space-y-0.5 md:space-y-2">
         <h2 className="w-56 text-sm font-semibold cursor-pointer text-[#e5e5e5] transition duration-200 hover:text-white md:text-lg">
           {title}
         </h2>

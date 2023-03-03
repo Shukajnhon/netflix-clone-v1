@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {v4} from "uuid";
+import {useAuth} from "../hooks/useAuth";
 
 const links = [
   {
@@ -26,6 +27,7 @@ const links = [
 ];
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const {logout} = useAuth();
 
   // console.log("window.scrollY:", window.scrollY);
   useEffect(() => {
@@ -93,13 +95,14 @@ const Header = () => {
           </svg>
         </span>
 
-        <Link to="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="rounded cursor-pointer"
-          />
-        </Link>
+        {/* <Link to="/account"> */}
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="rounded cursor-pointer"
+        />
+        {/* </Link> */}
       </div>
     </header>
   );
