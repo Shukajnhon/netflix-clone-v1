@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import useSWR from "swr";
 import {fetcher, requests, tmdbAPI} from "../utils/Constants";
 import Row from "../components/Row";
+import ModalMovies from "../components/ModalMovies";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -14,6 +15,8 @@ const HomePage = () => {
   const [comedyMovies, setComedyMovies] = useState();
   const [horrorMovies, setHorrorMovies] = useState();
   const [documentariesMovies, setDocumentarieMovies] = useState();
+
+  const [showModal, setShowModal] = useState(false);
 
   // fetch data using swr to get banner movies
   const {data} = useSWR(requests.fetchNetflixOriginals, fetcher);
@@ -110,6 +113,10 @@ const HomePage = () => {
           <Row title="Documentaries" movies={documentariesMovies}></Row>
         </div>
       </div>
+
+      {showModal && (
+        <ModalMovies open={showModal} onClose={() => {}}></ModalMovies>
+      )}
     </div>
   );
 };

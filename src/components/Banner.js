@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {BASE_IMG_URL} from "../utils/Constants";
+// import {useModal} from "./context/modalContext";
 
 const Banner = ({movies}) => {
   const [movie, setMovie] = useState(movies || null);
+  // const {showModal} = useModal();
+  // console.log("showModal:", showModal);
 
   //   set Random movie banner
   useEffect(() => {
