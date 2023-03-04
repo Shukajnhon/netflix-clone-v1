@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Input from "../components/Input.js";
 import {useAuth} from "../hooks/useAuth.js";
-import {useNavigate} from "react-router-dom";
 
 const schema = yup
   .object({
@@ -106,12 +106,12 @@ const LoginPage = () => {
             <span className="text-[gray] md:text-gray-400">
               New to Netflix?
             </span>
-            <span
+            <button
               onClick={() => navigate("/signup")}
               className="ml-2 text-white no-underline cursor-pointer hover:underline≈"
             >
               Sign up now
-            </span>
+            </button>
           </div>
         </form>
       </div>

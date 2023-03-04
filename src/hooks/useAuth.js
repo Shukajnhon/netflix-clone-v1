@@ -33,7 +33,8 @@ const AuthProvider = (props) => {
         navigate("/login");
       }
     });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Sign Up
   const signUp = async (email, password) => {

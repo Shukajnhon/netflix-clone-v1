@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useNavigate} from "react-router-dom";
 import Input from "../components/Input.js";
+import {useNavigate} from "react-router-dom";
 import {useAuth} from "../hooks/useAuth.js";
 
 const schema = yup
@@ -24,17 +24,17 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors, isSubmitted},
+    formState: {errors, isValid, isSubmitted},
   } = useForm({resolver: yupResolver(schema), mode: "onChange"});
-  const [signup, setSignUp] = useState(false);
 
   const {signUp} = useAuth();
 
   const navigate = useNavigate();
 
+  // onSubmit
   const onSubmit = async (data) => {
     console.log(data);
-    if (signup) {
+    if (isValid) {
       await signUp(data.email, data.password);
       navigate("/");
     } else {
@@ -109,7 +109,7 @@ const SignUp = () => {
             )}
           </div>
           <button
-            onClick={() => isSubmitted && setSignUp(true)}
+            onClick={() => isSubmitted}
             className="w-full py-3 font-semibold rounded-md bg-primary"
           >
             Sign Up Now
