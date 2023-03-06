@@ -16,6 +16,7 @@ const HomePage = () => {
   const [comedyMovies, setComedyMovies] = useState();
   const [horrorMovies, setHorrorMovies] = useState();
   const [documentariesMovies, setDocumentarieMovies] = useState();
+  const [genres, setGenres] = useState();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -34,6 +35,7 @@ const HomePage = () => {
         horror,
         romance,
         documentaries,
+        genre,
       ] = await Promise.all([
         fetch(tmdbAPI.getTrending())
           .then((res) => {
@@ -63,6 +65,9 @@ const HomePage = () => {
         fetch(tmdbAPI.getMovies(99))
           .then((res) => res.json())
           .then((data) => data.results),
+        fetch(tmdbAPI.getGenres())
+          .then((res) => res.json())
+          .then((data) => data.genres),
       ]);
 
       setTrendingMovies(trending);
@@ -73,6 +78,7 @@ const HomePage = () => {
       setHorrorMovies(horror);
       setRomanMovies(romance);
       setDocumentarieMovies(documentaries);
+      setGenres(genre);
 
       // console.log("trending", trending);
       // console.log("original", original);
@@ -85,6 +91,7 @@ const HomePage = () => {
         horror: horror,
         romance: romance,
         documentaries: documentaries,
+        genre: genre,
       };
     };
     getData();
@@ -114,7 +121,11 @@ const HomePage = () => {
           <Row title="Documentaries" movies={documentariesMovies}></Row>
         </div>
 
-        <Row2></Row2>
+        <Row2
+          title="Trending Now"
+          movies={trendingMovies}
+          genres={genres}
+        ></Row2>
       </div>
 
       {showModal && (

@@ -1,44 +1,49 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import IconCheckCircle from "./icons/IconCheckCircle";
-import IconChevronDown from "./icons/IconChevronDown";
+import React from "react";
+import Card from "./Card";
 
-import IconChevronRight from "./icons/IconChevronRight";
-import IconHandThumbUp from "./icons/IconHandThumbUp";
-import IconPlayCircle from "./icons/IconPlayCircle";
-import IconPlusCircle from "./icons/IconPlusCircle";
+import RowHeader from "./RowHeader";
 
-const Row2 = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [addItem, setAddItem] = useState(false);
+import ThumbImg from "./ThumbImg";
 
-  // handle AddItem Toggle
-  const handleAddItemToggle = () => {
-    setAddItem(!addItem);
-  };
+const Row2 = ({title, movies, genres}) => {
+  //   const [isHovered, setIsHovered] = useState(false);
+
+  //   console.log("row2:", movies);
 
   return (
-    <section className="pl-4">
-      <div className="flex items-center h-10 max-w-[300px] group gap-x-2">
-        <h2 className="text-sm font-semibold cursor-pointer md:text-lg text-text1">
-          movie header
-        </h2>
-        <div className="flex items-end h-6 pl-6 ">
-          <Link
-            className="invisible group-hover:animate-translateText group-hover:visible inline-flex max-w-[150px] justify-around text-xs text-[#54b9c5]"
-            to="/Movie"
-          >
-            <span className="">Watching all</span>
-            <span className="w-3 h-3 pt-0.5">
-              <IconChevronRight></IconChevronRight>
-            </span>
-          </Link>
-        </div>
+    <section className="pl-4 mt-4 pb-[10rem]">
+      <RowHeader title={title}></RowHeader>
+      <div className="gap-x-1 items-center md:gap-x-2.5 scrollbar-hide flex">
+        {/* content */}
+        {movies &&
+          movies.map((item) => {
+            return (
+              <div key={item.id} className="relative w-full group">
+                <div className="rounded cursor-pointer min-w-[128px] md:w-[260px] md:h-[171px]">
+                  {/* <img
+                    onMouseEnter={() => setIsHovered(true)}
+                    // onMouseLeave={() => setIsHovered(false)}
+                    className={`w-[260px] h-[171px] object-cover ${
+                        isHovered ? "rounded-md" : "rounded-t-md"
+                    }`}
+                    src={`${BASE_IMG_URL}/w500${item.backdrop_path}`}
+                    alt=""
+                    /> */}
+                  <ThumbImg images={item}></ThumbImg>
+                  {/* card */}
+                  {/* group-hover:scale-[1.4] md:group-hover:visible */}
+                  <div className="top-0 z-50 absolute translate-x-[30px] translate-y-[-24px] invisible scale-[1.4] left-0  md:group-hover:animate-zoom-out  group-hover:scale-[1.4] md:group-hover:visible">
+                    <Card movies={item} genres={genres}></Card>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
       </div>
 
-      {/* content */}
-      <div className="max-h-[171px] md:max-w-[260px] group relative">
+      {/* .. */}
+      {/* <div className="max-h-[171px] md:max-w-[260px] group relative">
         <div className="rounded cursor-pointer">
           <img
             onMouseEnter={() => setIsHovered(true)}
@@ -50,7 +55,7 @@ const Row2 = () => {
             alt=""
           />
         </div>
-        {/* card */}
+        
         <div
           className={`w-full shadow-lg bg-[#222] absolute invisible top-0 left-0 translate-x-[32px] translate-y-[-32px] rounded-b-md group-hover:visible group-hover:animate-zoom-out group-hover:scale-125  `}
         >
@@ -99,7 +104,7 @@ const Row2 = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
