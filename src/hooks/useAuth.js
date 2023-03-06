@@ -20,21 +20,21 @@ const AuthProvider = (props) => {
   const navigate = useNavigate();
 
   // check user is logged in
-  useEffect(() => {
-    onAuthStateChanged(firebaseAuth, (user) => {
-      if (user) {
-        //Login
-        setUser(user);
-        setLoading(false);
-      } else {
-        // Not logged in
-        setUser(null);
-        setLoading(true);
-        navigate("/login");
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(firebaseAuth, (user) => {
+  //     if (user) {
+  //       //Login
+  //       setUser(user);
+  //       setLoading(false);
+  //     } else {
+  //       // Not logged in
+  //       setUser(null);
+  //       setLoading(true);
+  //       navigate("/login");
+  //     }
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   // Sign Up
   const signUp = async (email, password) => {

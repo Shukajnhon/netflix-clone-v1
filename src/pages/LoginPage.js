@@ -5,7 +5,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Input from "../components/Input.js";
-import {useAuth} from "../hooks/useAuth.js";
+// import {useAuth} from "../hooks/useAuth.js";
 
 const schema = yup
   .object({
@@ -29,15 +29,15 @@ const LoginPage = () => {
   } = useForm({resolver: yupResolver(schema), mode: "onChange"});
   const [login, setLogin] = useState(false);
 
-  const {signIn} = useAuth();
+  // const {signIn} = useAuth();
 
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     console.log(data);
     if (login) {
-      await signIn(data.email, data.password);
-      navigate("/");
+      // await signIn(data.email, data.password);
+      // navigate("/");
     } else {
       console.log("log in fail");
     }

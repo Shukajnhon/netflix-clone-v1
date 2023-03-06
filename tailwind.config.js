@@ -12,10 +12,31 @@ module.exports = {
         bgColor2: "#6D6D6E",
         text2: "#808080",
         white: "#FFF",
+        text1: "#E5E5E5",
       },
       backgroundImage: {
         "gradient-to-b":
           "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%);",
+      },
+
+      keyframes: {
+        "zoom-out": {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "100%": {
+            transform: "translateX(32px) translate-y-[-32px] scale(1.25)",
+          },
+        },
+        translateText: {
+          "0%": {transform: "translateX(-40px)", opacity: "0"},
+
+          "100%": {transform: "translateX(0)", opacity: "1"},
+        },
+      },
+      animation: {
+        "zoom-out": "zoom-out 1s ease-in-out",
+        translateText: "translateText 0.5s ease-in-out",
       },
     },
   },

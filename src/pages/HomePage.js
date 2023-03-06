@@ -5,6 +5,7 @@ import useSWR from "swr";
 import {fetcher, requests, tmdbAPI} from "../utils/Constants";
 import Row from "../components/Row";
 import ModalMovies from "../components/ModalMovies";
+import Row2 from "../components/Row2";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -112,6 +113,8 @@ const HomePage = () => {
           <Row title="Romance Movies" movies={romanceMovies}></Row>
           <Row title="Documentaries" movies={documentariesMovies}></Row>
         </div>
+
+        <Row2></Row2>
       </div>
 
       {showModal && (

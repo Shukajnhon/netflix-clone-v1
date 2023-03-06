@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {BASE_IMG_URL} from "../utils/Constants";
+// import {DocumentData} from "firebase/firestore";
 // import {useModal} from "./context/modalContext";
 
 const Banner = ({movies}) => {
   const [movie, setMovie] = useState(movies || null);
+  // const [currentMovie, setCurrentMovie] = useState(DocumentData || []);
   // const {showModal} = useModal();
   // console.log("showModal:", showModal);
+
+  // console.log("DocumentData:", DocumentData);
 
   //   set Random movie banner
   useEffect(() => {
@@ -58,7 +62,14 @@ const Banner = ({movies}) => {
           </span>
           <span className="font-semibold">Play</span>
         </button>
-        <button className="bg-[gray]/70 bannerBtn">
+        <button
+          className="bg-[gray]/70 bannerBtn"
+          onClick={() => {
+            console.log("More info");
+            // setCurrentMovie(movie);
+            // setModal(true);
+          }}
+        >
           More Info
           <span className="w-5 h-5 md:w-8 md:h-8">
             <svg
