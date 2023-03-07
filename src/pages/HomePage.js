@@ -6,6 +6,7 @@ import {fetcher, requests, tmdbAPI} from "../utils/Constants";
 import Row from "../components/Row";
 import ModalMovies from "../components/ModalMovies";
 import Row2 from "../components/Row2";
+import RowTest from "../components/RowTest";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -111,7 +112,7 @@ const HomePage = () => {
         <Banner movies={moviesBanner}></Banner>
       </div>
       <div className="mb-20">
-        <div className="pl-2 md:space-y-20 md:pl-4 row">
+        {/* <div className="pl-2 md:space-y-20 md:pl-4 row">
           <Row title="Trending Now" movies={trendingMovies}></Row>
           <Row title="Top Rated" movies={topRatedMovies}></Row>
           <Row title="Action Thrillers" movies={actionMovies}></Row>
@@ -119,13 +120,19 @@ const HomePage = () => {
           <Row title="Comedies" movies={comedyMovies}></Row>
           <Row title="Romance Movies" movies={romanceMovies}></Row>
           <Row title="Documentaries" movies={documentariesMovies}></Row>
-        </div>
+        </div> */}
 
         <Row2
           title="Trending Now"
           movies={trendingMovies}
           genres={genres}
         ></Row2>
+
+        <RowTest
+          title="Trending Now"
+          movies={trendingMovies}
+          genres={genres}
+        ></RowTest>
       </div>
 
       {showModal && (

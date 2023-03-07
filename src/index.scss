@@ -25,4 +25,9 @@
   .input {
     @apply w-full rounded-md bg-[#333] px-5 py-2 placeholder:text-[gray] outline-none focus:bg-[#454545] text-white;
   }
+
+  .controls-icon,
+  .info {
+    @apply hover:text-[#b8b8b8];
+  }
 }
