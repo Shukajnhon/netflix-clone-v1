@@ -39,7 +39,7 @@ const Banner = ({movies}) => {
         <h1 className="text-2xl font-bold lg:text-7xl md:text-4xl">
           {title || original_title}
         </h1>
-        <p className="max-w-sm text-xs text-shadow-md md:text-lg md:max-w-lg lg:max-w-xl">
+        <p className="max-w-sm mb-4 text-xs text-shadow-md md:text-lg md:max-w-lg lg:max-w-xl">
           {`${overview?.slice(0, 150)}...`}
         </p>
       </div>

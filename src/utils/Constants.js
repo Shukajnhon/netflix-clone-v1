@@ -34,6 +34,9 @@ export const tmdbAPI = {
   getGenres: () => {
     return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&with_networks=213`;
   },
+  getVideos: (id) => {
+    return `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+  },
 };
 
 // export const getDataFromTMDB = async () => {

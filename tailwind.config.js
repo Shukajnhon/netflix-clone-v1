@@ -22,10 +22,10 @@ module.exports = {
       keyframes: {
         "zoom-out": {
           "0%": {
-            transform: "scale(1)",
+            transform: "translateX(-76px) scale(0.6)",
           },
           "100%": {
-            transform: "translateX(32px) translate-y-[-32px] scale(1.25)",
+            transform: "translate-y-[-32px] scale(1)",
           },
         },
         translateText: {
@@ -35,7 +35,7 @@ module.exports = {
         },
       },
       animation: {
-        "zoom-out": "zoom-out 1s ease-in-out",
+        zoomOut: "zoom-out 1s ease-in-out",
         translateText: "translateText 0.5s ease-in-out",
       },
     },

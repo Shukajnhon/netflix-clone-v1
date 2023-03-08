@@ -3,10 +3,9 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import useSWR from "swr";
 import {fetcher, requests, tmdbAPI} from "../utils/Constants";
-import Row from "../components/Row";
+
 import ModalMovies from "../components/ModalMovies";
-import Row2 from "../components/Row2";
-import RowTest from "../components/RowTest";
+import RowMovies from "../components/RowMovies";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -37,6 +36,7 @@ const HomePage = () => {
         romance,
         documentaries,
         genre,
+        video,
       ] = await Promise.all([
         fetch(tmdbAPI.getTrending())
           .then((res) => {
@@ -108,31 +108,72 @@ const HomePage = () => {
   return (
     <div className="relative h-screen bg-gradient-to-b md:h-[140vh]">
       <Header></Header>
-      <div className="relative pb-24 pl-4 lg:space-y-24 lg:pl-16">
+      <div className="relative pt-12 pl-4 mb:pb-24 lg:space-y-24 lg:pl-16">
         <Banner movies={moviesBanner}></Banner>
       </div>
-      <div className="mb-20">
-        {/* <div className="pl-2 md:space-y-20 md:pl-4 row">
-          <Row title="Trending Now" movies={trendingMovies}></Row>
-          <Row title="Top Rated" movies={topRatedMovies}></Row>
-          <Row title="Action Thrillers" movies={actionMovies}></Row>
-          <Row title="Scary Movies" movies={horrorMovies}></Row>
-          <Row title="Comedies" movies={comedyMovies}></Row>
-          <Row title="Romance Movies" movies={romanceMovies}></Row>
-          <Row title="Documentaries" movies={documentariesMovies}></Row>
-        </div> */}
+      <div className="mb-20 mt-[2rem] md:mt-3">
+        <div className=" row">
+          {/* <RowMovies title="Action Thrillers" movies={actionMovies}></RowMovies>
+          <RowMovies title="Scary Movies" movies={horrorMovies}></RowMovies>
+          <RowMovies title="Comedies" movies={comedyMovies}></RowMovies>
+          <RowMovies title="Romance Movies" movies={romanceMovies}></RowMovies>
+          <RowMovies
+            title="Documentaries"
+            movies={documentariesMovies}
+          ></RowMovies> */}
 
-        <Row2
+          <RowMovies
+            title="Trending Now"
+            movies={trendingMovies}
+            genres={genres}
+          ></RowMovies>
+
+          <RowMovies
+            title="Top Rated"
+            movies={topRatedMovies}
+            genres={genres}
+          ></RowMovies>
+
+          <RowMovies
+            title="Action Thrillers"
+            movies={actionMovies}
+            genres={genres}
+          ></RowMovies>
+
+          <RowMovies
+            title="Scary Movies"
+            movies={horrorMovies}
+            genres={genres}
+          ></RowMovies>
+
+          <RowMovies
+            title="Comedies"
+            movies={comedyMovies}
+            genres={genres}
+          ></RowMovies>
+          <RowMovies
+            title="Romance Movies"
+            movies={romanceMovies}
+            genres={genres}
+          ></RowMovies>
+          <RowMovies
+            title="Documentaries"
+            movies={documentariesMovies}
+            genres={genres}
+          ></RowMovies>
+        </div>
+
+        {/* <RowMovies
           title="Trending Now"
           movies={trendingMovies}
           genres={genres}
-        ></Row2>
+        ></RowMovies>
 
-        <RowTest
-          title="Trending Now"
-          movies={trendingMovies}
+        <RowMovies
+          title="Top Rated"
+          movies={topRatedMovies}
           genres={genres}
-        ></RowTest>
+        ></RowMovies> */}
       </div>
 
       {showModal && (
