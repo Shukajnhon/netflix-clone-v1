@@ -36,10 +36,10 @@ const Banner = ({movies}) => {
         />
       </div>
       <div className="w-2/4">
-        <h1 className="text-2xl font-bold lg:text-7xl md:text-4xl">
+        <h1 className="text-2xl font-bold md:pb-3 lg:text-5xl md:text-4xl lg:pb-8">
           {title || original_title}
         </h1>
-        <p className="max-w-sm mb-4 text-xs text-shadow-md md:text-lg md:max-w-lg lg:max-w-xl">
+        <p className="max-w-sm mb-4 text-xs md:pb-4 lg:pb-8 text-shadow-md md:text-lg md:max-w-lg lg:max-w-xl">
           {`${overview?.slice(0, 150)}...`}
         </p>
       </div>

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 // import {Link} from "react-router-dom";
 import {v4} from "uuid";
 import {useAuth} from "../hooks/useAuth";
@@ -6,7 +7,7 @@ import {useAuth} from "../hooks/useAuth";
 const links = [
   {
     name: "Home",
-    link: "/home",
+    link: "/",
   },
   {
     name: "TV Shows",
@@ -58,9 +59,9 @@ const Header = () => {
         <ul className="hidden space-x-4 md:flex">
           {links.map((item) => {
             return (
-              <li className="headerLink" key={v4()}>
+              <Link to={item.link} className="headerLink" key={v4()}>
                 {item.name}
-              </li>
+              </Link>
             );
           })}
         </ul>
@@ -83,7 +84,7 @@ const Header = () => {
             />
           </svg>
         </span>
-        <p className="hidden lg:inline">Kids</p>
+        <p className="hidden lg:inline">User</p>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

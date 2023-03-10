@@ -6,6 +6,7 @@ import {fetcher, requests, tmdbAPI} from "../utils/Constants";
 
 import ModalMovies from "../components/ModalMovies";
 import RowMovies from "../components/RowMovies";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -36,7 +37,6 @@ const HomePage = () => {
         romance,
         documentaries,
         genre,
-        video,
       ] = await Promise.all([
         fetch(tmdbAPI.getTrending())
           .then((res) => {
@@ -122,11 +122,13 @@ const HomePage = () => {
             movies={documentariesMovies}
           ></RowMovies> */}
 
-          <RowMovies
-            title="Trending Now"
-            movies={trendingMovies}
-            genres={genres}
-          ></RowMovies>
+          <div className="relative">
+            <RowMovies
+              title="Trending Now"
+              movies={trendingMovies}
+              genres={genres}
+            ></RowMovies>
+          </div>
 
           <RowMovies
             title="Top Rated"
@@ -175,6 +177,8 @@ const HomePage = () => {
           genres={genres}
         ></RowMovies> */}
       </div>
+
+      <Footer></Footer>
 
       {showModal && (
         <ModalMovies open={showModal} onClose={() => {}}></ModalMovies>
