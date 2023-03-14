@@ -18,14 +18,19 @@ function App() {
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/movie" element={<MoviesPage></MoviesPage>}></Route>
+        {/* <Route path="/movie" element={<MoviesPage></MoviesPage>}></Route> */}
         <Route
           path="/moviePlayer/:movieId"
           element={<MoviePlayer></MoviePlayer>}
         ></Route>
         <Route
           path="/*"
-          element={<>404 | this page could be not found</>}
+          element={
+            <>
+              404 | this page could be not found, We are trying developing
+              everyday
+            </>
+          }
         ></Route>
       </Routes>
     </Suspense>
