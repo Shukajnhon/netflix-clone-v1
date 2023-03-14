@@ -17,6 +17,9 @@ module.exports = {
       backgroundImage: {
         "gradient-to-b":
           "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%);",
+
+        "not-found":
+          "url(https://i.guim.co.uk/img/media/bb81e754b0ae44b72ba369469949b43768cc6990/0_338_5074_3045/master/5074.jpg?width=1200&quality=85&auto=format&fit=max&s=536c9f43b853fe28fbeb95b3fc4f6e70)",
       },
 
       keyframes: {

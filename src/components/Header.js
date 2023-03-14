@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 // import {Link} from "react-router-dom";
 import {v4} from "uuid";
 import {useAuth} from "../hooks/useAuth";
+import {getValueInputSearch, handleClickSearch} from "./redux/searchSlice";
 
 const links = [
   {
@@ -28,9 +30,18 @@ const links = [
 ];
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [inputHover, setInputHover] = useState(false);
+  const {inputSearch} = useSelector((state) => state.search);
+
+  const {isSearch} = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+
   const {logout} = useAuth();
 
   // console.log("window.scrollY:", window.scrollY);
+
+  // console.log("isSearch:", isSearch);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -45,6 +56,15 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleInputChange = (e) => {
+    const {value} = e.target;
+    dispatch(getValueInputSearch(value));
+  };
+
+  const handleClickSearchBtn = () => {
+    dispatch(handleClickSearch(!isSearch));
+  };
 
   return (
     <header className={`${isScrolled && "bg-bgColor"}`}>
@@ -68,23 +88,62 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4 text-sm font-light">
-        <span className="hidden sm:inline">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+        <div
+          className={`flex items-center h-6 search gap-[0.4rem] justify-center p-[0.2rem] pl-[0.5rem] rounded-[0.1rem] bg-transparent ${
+            showSearch ? "border border-white bg-[rgba(0,0,0,5)]" : ""
+          }`}
+        >
+          <button
+            className="btn-search"
+            onClick={() => {
+              handleClickSearchBtn();
+              setShowSearch(true);
+            }}
+            onBlur={() => {
+              if (!inputHover) {
+                setShowSearch(false);
+              }
+            }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </span>
-        <p className="hidden lg:inline">User</p>
+            <span className="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </span>
+          </button>
+          <input
+            className={`text-white transition-all bg-transparent border-none focus:outline-none ${
+              showSearch
+                ? "w-full opacity-100 visible p-[0.3rem]"
+                : "invisible w-0 opacity-0 "
+            } `}
+            onMouseEnter={() => setInputHover(true)}
+            onMouseLeave={() => setInputHover(false)}
+            onBlur={() => {
+              setShowSearch(false);
+              setInputHover(false);
+            }}
+            onChange={handleInputChange}
+            type="text"
+            name="inputSearch"
+            id="inputSearch"
+            autoFocus={true}
+            placeholder="search movie"
+          />
+        </div>
+
+        <p className="hidden cursor-default lg:inline">User</p>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

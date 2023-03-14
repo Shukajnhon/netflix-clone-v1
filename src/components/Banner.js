@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {BASE_IMG_URL} from "../utils/Constants";
 // import {DocumentData} from "firebase/firestore";
 // import {useModal} from "./context/modalContext";
@@ -10,6 +11,8 @@ const Banner = ({movies}) => {
   // console.log("showModal:", showModal);
 
   // console.log("DocumentData:", DocumentData);
+
+  const navigate = useNavigate();
 
   //   set Random movie banner
   useEffect(() => {
@@ -23,7 +26,9 @@ const Banner = ({movies}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
-  const {title, original_title, backdrop_path, poster_path, overview} =
+  console.log("moviesBanner", movies);
+
+  const {title, original_title, backdrop_path, poster_path, overview, id} =
     movie || [];
   // console.log(movie);
 
@@ -45,7 +50,13 @@ const Banner = ({movies}) => {
       </div>
 
       <div className="flex space-x-2">
-        <button className="text-black bg-white bannerBtn">
+        <button
+          className="text-black bg-white bannerBtn"
+          onClick={() => {
+            // console.log("idMovie:", id);
+            navigate(`/moviePlayer/${id}`);
+          }}
+        >
           <span className="md:h-5 md:w-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +76,7 @@ const Banner = ({movies}) => {
         <button
           className="bg-[gray]/70 bannerBtn"
           onClick={() => {
-            console.log("More info");
+            // console.log("More info");
             // setCurrentMovie(movie);
             // setModal(true);
           }}

@@ -16,6 +16,7 @@ export const requests = {
   fetchRomanceMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10749`,
   fetchDocumentaries: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=99`,
   fetchGenres: `${BASE_URL}/genre/movie?api_key=${API_KEY}&language=en-US`,
+  fetchSearchMoves: `${BASE_URL}/genre/movie?api_key=${API_KEY}&language=en-US`,
 };
 
 export const tmdbAPI = {
@@ -36,6 +37,9 @@ export const tmdbAPI = {
   },
   getVideos: (id) => {
     return `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+  },
+  getSearchMovies: (query) => {
+    return `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=en-US`;
   },
 };
 

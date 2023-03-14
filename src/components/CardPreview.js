@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import axios from "axios";
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {BASE_IMG_URL, tmdbAPI} from "../utils/Constants";
 import IconCheckCircle from "./icons/IconCheckCircle";
 import IconChevronDown from "./icons/IconChevronDown";
@@ -12,7 +13,9 @@ import IconPlusCircle from "./icons/IconPlusCircle";
 const CardPreview = ({data, genres}) => {
   const [addMovie, setAddMovies] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
 
+  // console.log("dataCard:", data);
   // const fetchDataMovie = async (id) => {
   //   try {
   //     await axios
@@ -86,7 +89,13 @@ const CardPreview = ({data, genres}) => {
             <h3 className="">{data.name || data.title}</h3>
             <div className="flex justify-between pt-2 icon">
               <div className="flex w-6 h-4 gap-4 controls">
-                <span className="controls-icon">
+                <span
+                  className="controls-icon"
+                  onClick={() => {
+                    console.log("cardPreviewID:", id);
+                    navigate(`/moviePlayer/${id}`);
+                  }}
+                >
                   <IconPlayCircle></IconPlayCircle>
                 </span>
                 <span onClick={handleToggleAddMovie} className="controls-icon">
@@ -107,29 +116,30 @@ const CardPreview = ({data, genres}) => {
 
             <div className="flex mt-4 genres">
               <ul className="flex flex-wrap gap-4">
-                {genres.map((genre, index) => {
-                  if (genre.id === genre_ids[0]) {
-                    return (
-                      <li key={index} className="pr-3">
-                        {genre.name}
-                      </li>
-                    );
-                  }
-                  if (genre.id === genre_ids[1]) {
-                    return (
-                      <li key={index} className="pr-3">
-                        {genre.name}
-                      </li>
-                    );
-                  }
-                  if (genre.id === genre_ids[2]) {
-                    return (
-                      <li key={index} className="pr-3">
-                        {genre.name}
-                      </li>
-                    );
-                  }
-                })}
+                {data &&
+                  genres.map((genre, index) => {
+                    if (genre.id === genre_ids[0]) {
+                      return (
+                        <li key={index} className="pr-3">
+                          {genre.name}
+                        </li>
+                      );
+                    }
+                    if (genre.id === genre_ids[1]) {
+                      return (
+                        <li key={index} className="pr-3">
+                          {genre.name}
+                        </li>
+                      );
+                    }
+                    if (genre.id === genre_ids[2]) {
+                      return (
+                        <li key={index} className="pr-3">
+                          {genre.name}
+                        </li>
+                      );
+                    }
+                  })}
                 {/* <li className="pr-3">action</li>
                   <li>action</li>
                   <li>action</li> */}

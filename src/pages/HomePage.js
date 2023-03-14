@@ -7,6 +7,8 @@ import {fetcher, requests, tmdbAPI} from "../utils/Constants";
 import ModalMovies from "../components/ModalMovies";
 import RowMovies from "../components/RowMovies";
 import Footer from "../components/Footer";
+import MoviesPage from "./MoviesPage";
+import {useDispatch, useSelector} from "react-redux";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -18,6 +20,9 @@ const HomePage = () => {
   const [horrorMovies, setHorrorMovies] = useState();
   const [documentariesMovies, setDocumentarieMovies] = useState();
   const [genres, setGenres] = useState();
+  const {inputSearch} = useSelector((state) => state.search);
+  const {isSearch} = useSelector((state) => state.search);
+  const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -107,13 +112,15 @@ const HomePage = () => {
 
   return (
     <div className="relative h-screen bg-gradient-to-b md:h-[140vh]">
-      <Header></Header>
+      <Header isSearch={isSearch}></Header>
       <div className="relative pt-12 pl-4 mb:pb-24 lg:space-y-24 lg:pl-16">
         <Banner movies={moviesBanner}></Banner>
       </div>
-      <div className="mb-20 mt-[2rem] md:mt-3">
-        <div className=" row">
-          {/* <RowMovies title="Action Thrillers" movies={actionMovies}></RowMovies>
+
+      {!isSearch && inputSearch === "" ? (
+        <div className="mb-20 mt-[2rem] md:mt-3">
+          <div className="row">
+            {/* <RowMovies title="Action Thrillers" movies={actionMovies}></RowMovies>
           <RowMovies title="Scary Movies" movies={horrorMovies}></RowMovies>
           <RowMovies title="Comedies" movies={comedyMovies}></RowMovies>
           <RowMovies title="Romance Movies" movies={romanceMovies}></RowMovies>
@@ -122,61 +129,52 @@ const HomePage = () => {
             movies={documentariesMovies}
           ></RowMovies> */}
 
-          <div className="relative">
+            <div className="relative">
+              <RowMovies
+                title="Trending Now"
+                movies={trendingMovies}
+                genres={genres}
+              ></RowMovies>
+            </div>
+
             <RowMovies
-              title="Trending Now"
-              movies={trendingMovies}
+              title="Top Rated"
+              movies={topRatedMovies}
+              genres={genres}
+            ></RowMovies>
+
+            <RowMovies
+              title="Action Thrillers"
+              movies={actionMovies}
+              genres={genres}
+            ></RowMovies>
+
+            <RowMovies
+              title="Scary Movies"
+              movies={horrorMovies}
+              genres={genres}
+            ></RowMovies>
+
+            <RowMovies
+              title="Comedies"
+              movies={comedyMovies}
+              genres={genres}
+            ></RowMovies>
+            <RowMovies
+              title="Romance Movies"
+              movies={romanceMovies}
+              genres={genres}
+            ></RowMovies>
+            <RowMovies
+              title="Documentaries"
+              movies={documentariesMovies}
               genres={genres}
             ></RowMovies>
           </div>
-
-          <RowMovies
-            title="Top Rated"
-            movies={topRatedMovies}
-            genres={genres}
-          ></RowMovies>
-
-          <RowMovies
-            title="Action Thrillers"
-            movies={actionMovies}
-            genres={genres}
-          ></RowMovies>
-
-          <RowMovies
-            title="Scary Movies"
-            movies={horrorMovies}
-            genres={genres}
-          ></RowMovies>
-
-          <RowMovies
-            title="Comedies"
-            movies={comedyMovies}
-            genres={genres}
-          ></RowMovies>
-          <RowMovies
-            title="Romance Movies"
-            movies={romanceMovies}
-            genres={genres}
-          ></RowMovies>
-          <RowMovies
-            title="Documentaries"
-            movies={documentariesMovies}
-            genres={genres}
-          ></RowMovies>
         </div>
-
-        {/* <RowMovies
-          title="Trending Now"
-          movies={trendingMovies}
-          genres={genres}
-        ></RowMovies>
-
-        <RowMovies
-          title="Top Rated"
-          movies={topRatedMovies}
-          genres={genres}
-        ></RowMovies> */}
-      </div>
+      ) : (
+        <MoviesPage genres={genres}></MoviesPage>
+      )}
 
       <Footer></Footer>
 

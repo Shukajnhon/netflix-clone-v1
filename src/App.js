@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import MoviesPage from "./pages/MoviesPage";
+import MoviePlayer from "./components/moviePlayer/MoviePlayer";
 
 // const LoginPage = lazy(() => import("./pages/LoginPage"));
 // const SignUpPage = lazy(() => import("./pages/SignUp"));
@@ -18,6 +19,10 @@ function App() {
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/movie" element={<MoviesPage></MoviesPage>}></Route>
+        <Route
+          path="/moviePlayer/:movieId"
+          element={<MoviePlayer></MoviePlayer>}
+        ></Route>
         <Route
           path="/*"
           element={<>404 | this page could be not found</>}
