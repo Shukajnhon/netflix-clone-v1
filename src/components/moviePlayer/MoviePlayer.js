@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import ReactPlayer from "react-player";
-import {useNavigate, useNavigation, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {withErrorBoundary} from "react-error-boundary";
 import useSWR from "swr";
 import {fetcher, tmdbAPI} from "../../utils/Constants";

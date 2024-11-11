@@ -1,12 +1,11 @@
-import React, {createContext, useContext, useEffect, useState} from "react";
+import React, {createContext, useContext, useState} from 'react';
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-} from "firebase/auth";
-import {firebaseAuth} from "../utils/firebase-config";
-import {useNavigate} from "react-router-dom";
+} from 'firebase/auth';
+import {firebaseAuth} from '../utils/firebase-config';
+import {useNavigate} from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -14,8 +13,8 @@ const AuthProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     id: 1,
-    name: "Peter",
-    email: "hieu@email.com",
+    name: 'Peter',
+    email: 'hieu@email.com',
   });
   const navigate = useNavigate();
 
@@ -43,7 +42,7 @@ const AuthProvider = (props) => {
     await createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
-        navigate("/");
+        navigate('/');
         setLoading(false);
       })
       .catch((error) => {
@@ -63,7 +62,7 @@ const AuthProvider = (props) => {
     await signInWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
-        navigate("/");
+        navigate('/');
         setLoading(false);
       })
       .catch((error) => {
@@ -82,7 +81,7 @@ const AuthProvider = (props) => {
     signOut(firebaseAuth)
       .then(() => {
         setUser(null);
-        console.log("LogOut");
+        console.log('LogOut');
       })
       .catch((err) => console.log(err));
   };
@@ -94,8 +93,8 @@ const AuthProvider = (props) => {
 
 const useAuth = () => {
   const context = useContext(AuthContext);
-  if (typeof context === "undefined")
-    throw new Error("useAth must be used within AuthProvider");
+  if (typeof context === 'undefined')
+    throw new Error('useAth must be used within AuthProvider');
 
   return context;
 };

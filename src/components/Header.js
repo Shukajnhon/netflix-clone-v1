@@ -1,38 +1,38 @@
-import React, {useEffect, useRef, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 // import {Link} from "react-router-dom";
-import {v4} from "uuid";
-import {useAuth} from "../hooks/useAuth";
-import {getValueInputSearch, handleClickSearch} from "./redux/searchSlice";
+import {v4} from 'uuid';
+import {useAuth} from '../hooks/useAuth';
+import {getValueInputSearch, handleClickSearch} from './redux/searchSlice';
 
 const links = [
   {
-    name: "Home",
-    link: "/",
+    name: 'Home',
+    link: '/',
   },
   {
-    name: "TV Shows",
-    link: "/tvShow",
+    name: 'TV Shows',
+    link: '/tvShow',
   },
   {
-    name: "Movies",
-    link: "/movie",
+    name: 'Movies',
+    link: '/movie',
   },
   {
-    name: "New & Popular",
-    link: "/new",
+    name: 'New & Popular',
+    link: '/new',
   },
   {
-    name: "My List",
-    link: "/mylist",
+    name: 'My List',
+    link: '/mylist',
   },
 ];
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
-  const {inputSearch} = useSelector((state) => state.search);
+  // const {inputSearch} = useSelector((state) => state.search);
 
   const {isSearch} = useSelector((state) => state.search);
   const dispatch = useDispatch();
@@ -50,10 +50,10 @@ const Header = () => {
         setIsScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -67,7 +67,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`${isScrolled && "bg-bgColor"}`}>
+    <header className={`${isScrolled && 'bg-bgColor'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
@@ -90,7 +90,7 @@ const Header = () => {
       <div className="flex items-center space-x-4 text-sm font-light">
         <div
           className={`flex items-center h-6 search gap-[0.4rem] justify-center p-[0.2rem] pl-[0.5rem] rounded-[0.1rem] bg-transparent ${
-            showSearch ? "border border-white bg-[rgba(0,0,0,5)]" : ""
+            showSearch ? 'border border-white bg-[rgba(0,0,0,5)]' : ''
           }`}
         >
           <button
@@ -125,8 +125,8 @@ const Header = () => {
           <input
             className={`text-white transition-all bg-transparent border-none focus:outline-none ${
               showSearch
-                ? "w-full opacity-100 visible p-[0.3rem]"
-                : "invisible w-0 opacity-0 "
+                ? 'w-full opacity-100 visible p-[0.3rem]'
+                : 'invisible w-0 opacity-0 '
             } `}
             onMouseEnter={() => setInputHover(true)}
             onMouseLeave={() => setInputHover(false)}

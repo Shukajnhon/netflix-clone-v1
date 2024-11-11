@@ -1,14 +1,14 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/iframe-has-title */
-import axios from "axios";
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {BASE_IMG_URL, tmdbAPI} from "../utils/Constants";
-import IconCheckCircle from "./icons/IconCheckCircle";
-import IconChevronDown from "./icons/IconChevronDown";
-import IconHandThumbUp from "./icons/IconHandThumbUp";
-import IconPlayCircle from "./icons/IconPlayCircle";
-import IconPlusCircle from "./icons/IconPlusCircle";
+// import axios from "axios";
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {BASE_IMG_URL} from '../utils/Constants';
+import IconCheckCircle from './icons/IconCheckCircle';
+import IconChevronDown from './icons/IconChevronDown';
+import IconHandThumbUp from './icons/IconHandThumbUp';
+import IconPlayCircle from './icons/IconPlayCircle';
+import IconPlusCircle from './icons/IconPlusCircle';
 
 const CardPreview = ({data, genres}) => {
   const [addMovie, setAddMovies] = useState(false);
@@ -65,7 +65,7 @@ const CardPreview = ({data, genres}) => {
 
       <div
         className={`hover z-50 bg-[#181818] h-max w-[20rem] absolute top-[-10vh] left-0 rounded-md shadow-lg invisible ${
-          hovered ? "md:group-hover:visible md:group-hover:animate-zoomOut" : ""
+          hovered ? 'md:group-hover:visible md:group-hover:animate-zoomOut' : ''
         }`}
       >
         {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/IJsiX3z9WvM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
@@ -92,7 +92,7 @@ const CardPreview = ({data, genres}) => {
                 <span
                   className="controls-icon"
                   onClick={() => {
-                    console.log("cardPreviewID:", id);
+                    console.log('cardPreviewID:', id);
                     navigate(`/moviePlayer/${id}`);
                   }}
                 >

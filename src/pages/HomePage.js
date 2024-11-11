@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
-import Banner from "../components/Banner";
-import Header from "../components/Header";
-import useSWR from "swr";
-import {fetcher, requests, tmdbAPI} from "../utils/Constants";
+import React, {useEffect, useState} from 'react';
+import Banner from '../components/Banner';
+import Header from '../components/Header';
+import useSWR from 'swr';
+import {fetcher, requests, tmdbAPI} from '../utils/Constants';
 
-import ModalMovies from "../components/ModalMovies";
-import RowMovies from "../components/RowMovies";
-import Footer from "../components/Footer";
-import MoviesPage from "./MoviesPage";
-import {useDispatch, useSelector} from "react-redux";
+import ModalMovies from '../components/ModalMovies';
+import RowMovies from '../components/RowMovies';
+import Footer from '../components/Footer';
+import MoviesPage from './MoviesPage';
+import {useSelector} from 'react-redux';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
@@ -22,9 +22,9 @@ const HomePage = () => {
   const [genres, setGenres] = useState();
   const {inputSearch} = useSelector((state) => state.search);
   const {isSearch} = useSelector((state) => state.search);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal] = useState(false);
 
   // fetch data using swr to get banner movies
   const {data} = useSWR(requests.fetchNetflixOriginals, fetcher);
@@ -117,7 +117,7 @@ const HomePage = () => {
         <Banner movies={moviesBanner}></Banner>
       </div>
 
-      {!isSearch && inputSearch === "" ? (
+      {!isSearch && inputSearch === '' ? (
         <div className="mb-20 mt-[2rem] md:mt-3">
           <div className="row">
             {/* <RowMovies title="Action Thrillers" movies={actionMovies}></RowMovies>
